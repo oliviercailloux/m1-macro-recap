@@ -1,0 +1,135 @@
+= Récap Macro
+
+== Modèle néo-classique
+Modèle de Solow. Avec ou sans progrès technique.
+
+=== Dérivées et croissance
+Pour toutes fonctions du temps stem:[p_t, q_t] et stem:[α ∈ ℝ]:
+
+- Notation : stem:[dot p_t = (dp_t)/dt]
+- Notation : stem:[g_(p_t) = (dot p_t) / (p_t)]
+- On a : stem:[g_(p_t^α q_t) = (d(ln (p_t^α q_t))) / (dt) = (d(α ln p_t + ln q_t)) / (dt) = α g_(p_t) + g_(q_t)]
+- Il s’ensuit : stem:[g_((p_t) / (q_t)) = g_(p_t q_t^(-1)) = g_(p_t) - g_(q_t)]
+
+=== Hypothèses
+- stem:[F] homogène degré 1
+- stem:[F(0, 1) = 0], stem:[(∂F)/(∂K) > 0], stem:[(∂F)/(∂L) > 0], stem:[(∂^2 F) / (∂K^2) < 0]
+- stem:[dot (K_t) = s F(K_t, L_t) - δ K_t], stem:[0 < s < 1], avec stem:[0 < δ < 1] le taux de dépréciation du capital
+- stem:[g_(L_t) = n > 0]
+
+=== Notations
+- stem:[k_t = K_t / L_t]
+- stem:[f(k_t) = (F(K_t, L_t)) / L_t]
+- stem:[c_t = (1 - s) f(k_t)]
+
+=== Déductions
+- stem:[dot (k_t) = (d K_t / L_t) / dt = (dot (K_t) L_t - K_t dot (L_t)) / (L_t^2) = s f(k_t) - δ k_t - k_t n] (équation dynamique fondamentale)
+- stem:[dot (k_t) = 0 ⇔ dot (K_t) L_t = K_t dot (L_t) ⇔ g_K = n]
+- En notant implicitement stem:[s = s(k_t)] le taux d'épargne assurant l'état stationnaire en stem:[k_t], on a stem:[dot (k_t) = 0 ⇔ s f(k_t) = k_t (δ + n) ⇒ (d(s f(k_t)))/(dk_t) = (s f(k_t))/k_t]
+- stem:[(dc_t)/(dk_t) = 0 = dot (k_t) ⇒ (df(k_t))/(dk_t) = (d(s f(k_t)))/(dk_t) = (s f(k_t))/k_t]
+- stem:[F(K_t, L_t) = K_t^α L^{1 - α} ⇒ f(k_t) = k_t^α ⇒ (df(k_t))/(dk_t) = (α f(k_t))/k_t]
+
+=== Autres concepts et déductions
+- stem:[y_t = f(k_t)]
+// - stem:[(dF(K_t, L_t)) / (dK_t) = (d(L_t f(k_t))) / (dK_t) = L_t (df(k_t)) / (dk_t) (d(K_t/L_t)) / (dK_t) = (df(k_t)) / (dk_t)]
+- stem:[(dF(K_t, L_t)) / (dK_t) = (dF(K_t, L_t)) / (dk_t) (d(K_t/L_t)) / (dK_t) = (d(F(K_t, L_t)) / L_t) / (dk_t) = (df(k_t)) / (dk_t)]
+- stem:[F_K^'(K_t, L_t) = (dF) / (dK_t) (K_t, L_t) = R_t]
+- stem:[F_L^'(K_t, L_t) = (dF) / (dL_t) (K_t, L_t) = w_t]
+- stem:[r_t = R_t - δ]
+
+== Modèle de croissance optimale, temps discret
+Modèle de Ramsey-Cass-Koopmans
+
+=== Croissance
+Modèle à temps discret. Soit une fonction du temps stem:[p_t].
+
+- Notation : stem:[Δp_t = p_(t + 1) - p_t]
+- Notation : stem:[g_(p_t) = (Δp_t) / p_t]
+
+=== Hypothèses
+- stem:[F] homogène degré 1
+- stem:[F(0, 1) = 0], stem:[(∂F)/(∂K) > 0], stem:[(∂F)/(∂L) > 0], stem:[(∂^2 F) / (∂K^2) < 0]
+- stem:[ΔK_t = F(K_t, L_t) - C_t - δ K_t], avec consommation sociale stem:[C_t]
+- stem:[g_(L_t) = n > 0], avec stem:[L_0 = 1]
+- Agent représentatif avec utilité au temps stem:[t] valant stem:[u(c_t)], avec stem:[c_t = C_t / L_t], et utilité totale stem:[U^text(agent) = sum_(0 ≤ t) β^t u(c_t)], avec taux d’escompte psychologique stem:[β]
+
+=== Déductions
+- stem:[(n + 1) k_(t + 1) = f(k_t) - c_t + (1 - δ) k_t] (équation dynamique fondamentale et contraintes de ressources)
+- On a stem:[text(TMS)_(c_t → c_(t+1))^text(agent) = -(dc_t) / (dc_(t + 1)) = ((dU^text(agent)) / (dc_(t + 1))) / ((dU^text(agent)) / (dc_t)) = (β^(t + 1) u^'(c_(t + 1))) / (β^t u^'(c_t)) = (β u^'(c_(t + 1))) / (u^'(c_t))]
+- Optimum individuel atteint lorsque stem:[text(TMS)_(c_t → c_(t+1))^text(agent) = text(rapport des prix) = p_(t + 1) / p_t]
+//(mais j’ignore comment obtenir le rapport des prix directement)
+- Utilité sociale stem:[U = sum_(0 ≤ t) L_t β^t u(c_t) = sum_(0 ≤ t) (1 + n)^t β^t u(c_t)]
+- Programme de l’optimum social : stem:[max_(k_t, c_t) U] sous contraintes stem:[∀t: (n + 1) k_(t + 1) = f(k_t) - c_t + (1 - δ) k_t], 
+lagrangien stem:[sum_(0 ≤ t) (1 + n)^t β^t u(c_t) - sum_(0 ≤ t) λ_t [(n + 1) k_(t + 1) - f(k_t) + c_t - (1 - δ) k_t\]], 
+d’où stem:[(1 + n)^t β^t u^'(c_t) = λ_t] et stem:[(n + 1) λ_(t - 1) = λ_t [f^'(k_t) + (1 - δ)\]], 
+donc stem:[(λ_t) / λ_(t - 1) = ((1 + n) β u^'(c_t)) / (u^'(c_(t - 1))) = (n + 1) / (f^'(k_t) + (1 - δ))],
+soit stem:[(β u^'(c_t)) / (u^'(c_(t - 1))) = 1 / (f^'(k_t) + (1 - δ))]
+
+=== Autre notation
+- Posons stem:[β = 1 / (1+ψ)], où stem:[ψ] est le taux de préférence pour le présent
+- On obtient : stem:[(u^'(c_t)) / (u^'(c_(t - 1))) = (1 + ψ) / (1 + r_t)], appelée condition de Keynes-Ramsey en temps discret
+- On note aussi stem:[β_f = (1 + n) β] le taux d’escompte psychologique familial
+
+== Modèle de croissance optimale, temps continu
+=== Hypothèses
+- stem:[F] homogène degré 1
+- stem:[F(0, 1) = 0], stem:[(∂F)/(∂K) > 0], stem:[(∂F)/(∂L) > 0], stem:[(∂^2 F) / (∂K^2) < 0]
+- stem:[g_(L_t) = n > 0], avec stem:[L_0 = 1]
+- Agent représentatif avec utilité au temps stem:[t] valant stem:[u(c_t)], avec stem:[c_t = C_t / L_t], avec taux d’escompte psychologique stem:[β = 1 / (1+ψ)]
+- Utilité sociale stem:[U = int_(ℝ^+) e^(-(ψ - n)t) u(c_t) dt]
+- stem:[dot (K_t) = F(K_t, L_t) - C_t - δK_t]
+
+=== Déductions
+* stem:[dot (k_t) = (d K_t / L_t) / dt = (dot (K_t) L_t - K_t dot (L_t)) / (L_t^2) = f(k_t) - c_t - (n + δ) k_t] (équation dynamique fondamentale, contrainte de ressources)
+* Hamiltonien stem:[cc H_t = e^(-(ψ - n)t) u(c_t) + z_t(f(k_t) - c_t - (δ + n) k_t)]
+** stem:[(d cc H_t) / (dc_t) = 0 ⇒ e^(-(ψ - n)t) u^'(c_t) = z_t ⇒ g_(z_t) = g_(u^'(c_t)) + g_(e^(-(ψ - n)t)) = g_(u^'(c_t)) - ψ + n]
+** stem:[(d cc H_t) / (dk_t) + dot (z_t) = 0] (amélioration marginale compensée par prix marginal du capital au cours du temps), d’où stem:[dot (z_t) = z_t (δ + n - f^'(k_t))]
+* On obtient donc stem:[g_(u^'(c_t)) = δ - f^'(k_t) + ψ]
+* stem:[dot (k_t) = 0 ⇒ c_t = f(k^***) - (n + δ) k^*** ⇒ dot (c_t) = 0 ⇒ g_(u^'(c_t)) = 0 ⇒ f^'(k^***) = δ + ψ] 
+
+=== Autres concepts et déductions
+- stem:[g_(u^'(c_t)) = ψ - r_t]
+- Aversion relative au risque (RRA) : stem:[-(g_(u^'(c_t))) / g_(c_t)] ; définissons son inverse comme stem:[σ(c_t) = -g_(c_t) / (g_(u^'(c_t)))]
+// - On a aussi l’élasticité intertemporelle de substitution (EIS) : stem:[ε_t = - ((d(c_t // c_(t + 1))) / (c_t // c_(t + 1))) / ((d(u^'(c_t) // u^'(c_(t + 1)))) / (u^'(c_t) // u^'(c_(t + 1))))] ; il s’ensuit stem:[ε_t = (c_(t + 1) / c_t) / ((du^'(c_t)) / (dc_t) (dc_(t + 1)) / (du^'(c_(t + 1))) (u^'(c_(t + 1))) / (u^'(c_t))) = σ(c_t)]
+- Alors, stem:[g_(c_t) = σ(c_t) (r_t - ψ)]
+- Avec Constant RRA (CRRA) stem:[u(c_t) = (c_t^(1 - 1/σ)) / (1 - 1/σ)], avec stem:[σ ∈ ℝ] l’inverse de la RRA (une constante), on obtient stem:[g_(c_t) = σ (r_t - ψ)]
+
+== Modèle à générations imbriquées
+Modèle de Diamond
+
+=== Hypothèses
+- stem:[N_{j, t} = N_{v, t+1}]
+- stem:[N_{j, t + 1} = (1 + n) N_{j, t}]
+- stem:[U(c_{j, t}, c_{v, t+1}) = u(c_{j, t}) + β u(c_{v, t+1})], stem:[u^' > 0], stem:[u^('') < 0], stem:[0 < β < 1] taux d’escompte psychologique, stem:[β = 1/(1+ψ)], stem:[ψ] taux de préférence pour le présent
+- stem:[e_(j, t)] épargne du jeune en stem:[t]
+
+=== Programme du consommateur
+- stem:[text(CB)_t] : stem:[(∂F)/(∂L_t) = c_{j, t} + e_{j, t}]
+- stem:[text(CB)_(t+1)] (écrite en prix de stem:[t]) : stem:[(1+r_{t+1})e_{j, t} = c_{v, t+1}]
+- stem:[text(CB intertemporelle)] (stem:[(1+r_{t+1})(text(CB)_t) - text(CB)_(t+1)]) : stem:[(1+r_{t+1})(∂F)/(∂L_t) = (1+r_{t+1})c_{j, t} + c_{v, t+1}]
+- Programme du consommateur : stem:[max_{e_{j, t}} U] sous contrainte stem:[text(CB intertemporelle)]
+- Via Lagrangien (stem:[β u^'(c_{v, t+1}) = λ = (u^'(c_{j, t}))/(1+r_(t + 1))]) ou via TMS = rapport des utilités = rapport des prix, on obtient stem:[(u^'(c_{j, t})) / (u^'(c_{v, t+1})) = β (1 + r_(t + 1))]
+- On obtient stem:[e_{j, t}^*** = h((∂F)/(∂L_t), r_{t+1})] comme une fonction croissante de stem:[(∂F)/(∂L_t)]
+- Impact de stem:[r] ambigu : effet prix et effet pouvoir d’achat, ou effet de substitution et effet de revenu
+
+=== Dynamique
+- stem:[K_{t+1} = N_{j, t} e_{j, t}], l’épargne aggrégée des jeunes
+- Donc stem:[k_{t+1} = 1/(1+n) e_{j, t}]
+
+- Équilibre sur le marché des biens : stem:[F = N_{j, t} c_{j, t} + N_{v, t} c_{v, t} + I_t]
+- Épuisement du produit : stem:[F = (∂F)/(∂K_t) K_t + (∂F)/(∂L_t) N_{j, t}] (produit sert à rémunérer capital et travail)
+- stem:[K_{t+1} = I_t + (1 - δ) K_t]
+- Je suppose qu’on obtient ainsi e en fonction des dérivées de F
+
+=== Croissance
+Si g_k = 0, on a 0 = g_k = (K_t+1/Nj+1)/((K_t)/(N_j)) - 1 donc (N_t+1/N_t) (K_t+1/Nj+1)/((K_t)/(N_j)) = K_t+1/K_t = (1+n) donc g_K = n
+
+=== Règle d’or
+
+=== Autres notations
+- stem:[S_{j, t} = N_{j, t} e_{j, t}], l’épargne aggrégée des jeunes
+- stem:[w_t = (∂F)/(∂L_t)], le salaire
+
+== Croissance endogène
+== Croissance et environnement
+Modèle de Van der Ploeg et Withagen
